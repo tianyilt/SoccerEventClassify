@@ -4,9 +4,9 @@ import cv2
 import os
 
 
-def save_img(video_path):
-    # 输入：视频所在文件夹路径，注意最后带有/
-    # 输出：每隔timeFms存视频，在文件夹img内保存图像
+def save_img(video_path='../videos/'):
+    # 输入：视频所在文件夹路径，注意最后带有/,默认放在上层目录的videos上
+    # 输出：每隔timeFms存视频，在文件夹img内保存图像，默认放在上层目录的imgs下面
     videos = os.listdir(video_path)
     for video_name in videos:
         # file_name = video_name.split('.')[0]
@@ -23,7 +23,7 @@ def save_img(video_path):
             pic_path = folder_name + '/'
             if rval:
                 if (c % timeF == 0):  # 每隔timeF帧进行存储操作
-                    # cv2.imwrite('../image/' + str(c) + '.jpg', frame)  # 存储为图像
+                    # cv2.imwrite('../image/' + str(c) + video_name + '.jpg', frame)  # 存储为图像
                     cv2.imwrite(pic_path + str('%06d' % c) + '.jpg', frame)  # 存储为图像,保存名为 文件夹名_数字（第几个文件）.jpg
 
             # cv2.waitKey(1)
